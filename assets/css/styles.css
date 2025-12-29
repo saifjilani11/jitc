@@ -319,7 +319,6 @@ body {
   grid-template-columns: 1fr 1fr;
   align-items: flex-start;
   gap: 2.5rem;
-  margin-bottom: 4rem;
   padding-bottom: 3rem;
   border-bottom: 1px solid rgba(148, 163, 184, 0.25);
 }
@@ -959,4 +958,22 @@ body {
   object-fit: contain;
   opacity: 0.8;
   transition: opacity var(--transition-fast);
+}
+
+/* Form validation */
+.form-field.invalid input,
+.form-field.invalid textarea {
+  border-color: var(--accent);
+  background-color: var(--accent-soft);
+}
+
+.form-field .error-message {
+  color: var(--accent);
+  font-size: 0.8rem;
+  display: none;
+  margin-top: 0.25rem;
+}
+
+.form-field.invalid .error-message {
+  display: block;
 }

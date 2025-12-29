@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector(".nav.toggle");
   const mainNav = document.querySelector(".main.nav");
   const links = document.querySelectorAll(".main.nav a");
-  const contactForm = document.querySelector("#contact form");
+  const contactForm = document.querySelector("#contact-form");
 
   // mobile nav
   if (navToggle && mainNav) {
@@ -17,21 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // fake contact form submit
-  if (contactForm) {
-    contactForm.addEventListener("submit", event => {
-      event.preventDefault();
-
-      const formData = new FormData(contactForm);
-      const firstName = formData.get("first name");
-
-      alert(
-        `Thank you ${firstName || ""} Your message has been received. Our team will contact you shortly.`
-      );
-
-      contactForm.reset();
-    });
-  }
+  
 
   // scroll reveal
   const revealEls = document.querySelectorAll(".reveal");
