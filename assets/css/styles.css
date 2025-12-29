@@ -926,7 +926,7 @@ body {
 .marquee__inner {
   display: flex;
   width: max-content;
-  animation: marquee 15s linear infinite;
+  animation: marquee 25s linear infinite;
 }
 
 .marquee__group {
