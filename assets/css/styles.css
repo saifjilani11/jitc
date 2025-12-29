@@ -977,3 +977,8 @@ body {
 .form-field.invalid .error-message {
   display: block;
 }
+
+.section-divider-wrap {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+}
