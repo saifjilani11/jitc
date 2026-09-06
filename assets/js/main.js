@@ -1,19 +1,49 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const navToggle = document.querySelector(".nav.toggle");
-  const mainNav = document.querySelector(".main.nav");
-  const links = document.querySelectorAll(".main.nav a");
-  const contactForm = document.querySelector("#contact-form");
+  const navToggle = document.querySelector(".nav-toggle");
+  const mainNav = document.querySelector(".main-nav");
+  const links = document.querySelectorAll(".main-nav a");
+
+  // Keep visitors at the same section when changing languages.
+  const languageLinks = document.querySelectorAll(".language-switcher a");
+  const updateLanguageLinks = () => {
+    languageLinks.forEach(link => {
+      const url = new URL(link.href);
+      url.hash = window.location.hash;
+      link.href = url.href;
+    });
+  };
+  updateLanguageLinks();
+  window.addEventListener("hashchange", updateLanguageLinks);
+
+  // Use each page's translated validation copy, regardless of browser language.
+  document.querySelectorAll("#contact-form input[required]").forEach(input => {
+    input.addEventListener("invalid", () => {
+      const message = input.closest(".form-field").querySelector(".error-message");
+      if (message) input.setCustomValidity(message.textContent);
+    });
+    input.addEventListener("input", () => input.setCustomValidity(""));
+  });
 
   // mobile nav
   if (navToggle && mainNav) {
     navToggle.addEventListener("click", () => {
-      mainNav.classList.toggle("open");
+      const isOpen = mainNav.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
     });
 
     links.forEach(link => {
       link.addEventListener("click", () => {
         mainNav.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
       });
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && mainNav.classList.contains("open")) {
+        mainNav.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.focus();
+      }
     });
   }
 
