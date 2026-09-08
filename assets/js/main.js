@@ -3,18 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainNav = document.querySelector(".main-nav");
   const links = document.querySelectorAll(".main-nav a");
 
-  // Keep visitors at the same section when changing languages.
-  const languageLinks = document.querySelectorAll(".language-switcher a");
-  const updateLanguageLinks = () => {
-    languageLinks.forEach(link => {
-      const url = new URL(link.href);
-      url.hash = window.location.hash;
-      link.href = url.href;
-    });
-  };
-  updateLanguageLinks();
-  window.addEventListener("hashchange", updateLanguageLinks);
-
   // Use each page's translated validation copy, regardless of browser language.
   document.querySelectorAll("#contact-form input[required]").forEach(input => {
     input.addEventListener("invalid", () => {
