@@ -380,6 +380,10 @@ body {
   border-bottom: 1px solid rgba(148, 163, 184, 0.25);
 }
 
+.services-section > .service-block:last-child {
+  border-bottom: none;
+}
+
 .service-icon {
   width: 42px;
   margin-bottom: 1rem;
@@ -670,9 +674,10 @@ body {
 
 .how-line {
   position: absolute;
-  left: 25px;
-  top: 52px;
-  bottom: 30px;
+  /* Connect this circle to the next, independently of text height. */
+  left: 21px;
+  top: calc(0.85rem + 44px);
+  bottom: -0.85rem;
   width: 2px;
   background: rgba(148, 163, 184, 0.45);
   overflow: hidden;
